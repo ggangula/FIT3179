@@ -22,22 +22,23 @@
               "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
             },
             "key": "CouncilArea",
-            "fields": ["Price"]
+            "fields": ["AveragePriceLGA"]
           }
         }
       ],
       "mark": {"type": "geoshape"},
       "encoding": {
-        "color": {"field": "Price", "type": "quantitative"},
+        "color": {"field": "AveragePriceLGA", "type": "quantitative"},
         "tooltip": [
           {
             "field": "properties.vic_lga__3",
             "type": "nominal",
             "title": "Local Government Area"
           },
-          {"field": "Price", "type": "quantitative"}
+          {"field": "AveragePriceLGA", "type": "quantitative"}
         ]
       }
     }
-  ]
+  ],
+  "config": {}
 }
