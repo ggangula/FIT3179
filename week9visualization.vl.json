@@ -28,7 +28,11 @@
       ],
       "mark": {"type": "geoshape"},
       "encoding": {
-        "color": {"field": "AveragePriceLGA", "type": "quantitative"},
+        "color": {
+          "field": "AveragePriceLGA",
+          "type": "quantitative",
+          "title": "Average Price"
+        },
         "tooltip": [
           {
             "field": "properties.vic_lga__3",
