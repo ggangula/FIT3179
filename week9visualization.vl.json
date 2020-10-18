@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 600,
+  "title": "Average Price of Housing in Melbourne",
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [-36, -38],
+    "rotate": [-145, 0, 0]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/vic.topojson",
+        "format": {"type": "topojson", "feature": "collection"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.vic_lga__3",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
+            },
+            "key": "CouncilArea",
+            "fields": ["AveragePriceLGA"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "color": {
+          "field": "AveragePriceLGA",
+          "type": "quantitative",
+          "title": "Average Price"
+        },
+        "tooltip": [
+          {
+            "field": "properties.vic_lga__3",
+            "type": "nominal",
+            "title": "Local Government Area"
+          },
+          {
+            "field": "AveragePriceLGA",
+            "type": "quantitative",
+            "title": "Average Price"
+          }
+        ]
+      }
+    }
+  ]
+}
