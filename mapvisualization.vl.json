@@ -35,10 +35,13 @@
             "type": "nominal",
             "title": "Local Government Area"
           },
-          {"field": "AveragePriceLGA", "type": "quantitative"}
+          {
+            "field": "AveragePriceLGA",
+            "type": "quantitative",
+            "title": "Average Price"
+          }
         ]
       }
     }
-  ],
-  "config": {}
+  ]
 }
