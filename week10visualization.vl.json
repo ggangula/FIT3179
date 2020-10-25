@@ -1,0 +1,152 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 400,
+  "title": "House Prices based on Region",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
+  },
+  "params": [
+    {
+      "name": "Region_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Eastern Metropolitan",
+          "Eastern Victoria",
+          "Northern Metropolitan",
+          "Northern Victoria",
+          "South-Eastern Metropolitan",
+          "Southern Metropolitan",
+          "Western Metropolitan",
+          "Western Victoria"
+        ],
+        "labels": [
+          "Show All",
+          "Eastern Metropolitan",
+          "Eastern Victoria",
+          "Northern Metropolitan",
+          "Northern Victoria",
+          "South-Eastern Metropolitan",
+          "Southern Metropolitan",
+          "Western Metropolitan",
+          "Western Victoria"
+        ],
+        "name": "Region Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Distance > 0"},
+    {"filter": "datum.Price > 0"},
+    {
+      "filter": "Region_selection == null || datum.Regionname == Region_selection"
+    }
+  ],
+  "selection": {
+    "continent_highlight": {
+      "type": "multi",
+      "fields": ["Continent"],
+      "bind": "legend"
+    }
+  },
+  "mark": "circle",
+  "encoding": {
+    "y": {
+      "field": "Price",
+      "type": "quantitative",
+      "title": "Price",
+      "axis": {"tickCount": 3},
+      "scale": {"type": "log", "domain": [100000, 10000000]}
+    },
+    "x": {
+      "field": "Distance",
+      "type": "quantitative",
+      "title": "Distance from CBD",
+      "axis": {"tickCount": 9},
+      "scale": {"type": "linear"}
+    },
+    "color": {
+      "field": "Regionname",
+      "type": "nominal",
+      "title": "Region",
+      "scale": {
+        "domain": [
+          "Eastern Metropolitan",
+          "Eastern Victoria",
+          "Northern Metropolitan",
+          "Northern Victoria",
+          "South-Eastern Metropolitan",
+          "Southern Metropolitan",
+          "Western Metropolitan",
+          "Western Victoria"
+        ],
+        "range": [
+          "#e41a1c",
+          "#a65628",
+          "#ff7f00",
+          "#df65b0",
+          "#a6cee3",
+          "#377eb8",
+          "#984ea3",
+          "#7bccc4"
+        ]
+      }
+    },
+    "opacity": {"value": 0.5},
+    "size": {
+      "field": "Bedroom2",
+      "type": "quantitative",
+      "title": "Bedrooms",
+      "scale": {
+        "type": "threshold",
+        "domain": [2, 3, 4, 6],
+        "range": [100, 200, 300, 400, 500]
+      },
+      "legend": {"format": ".1s"}
+    },
+    "tooltip": [
+      {"field": "Suburb", "title": "Suburb", "type": "nominal"},
+      {"field": "Price", "type": "quantitative", "format": "$,"},
+      {
+        "field": "Distance",
+        "title": "Distance from CBD (km)",
+        "type": "quantitative",
+        "format": ""
+      },
+      {"field": "CouncilArea", "title": "LGA", "type": "nominal"},
+      {"field": "Regionname", "title": "Region", "type": "nominal"},
+      {
+        "field": "Bedroom2",
+        "title": "Bedrooms",
+        "type": "quantitative",
+        "format": ","
+      },
+      {
+        "field": "Car",
+        "title": "Car Spaces",
+        "type": "quantitative",
+        "format": ","
+      },
+      {
+        "field": "Bathroom",
+        "title": "Bathrooms",
+        "type": "quantitative",
+        "format": ","
+      },
+      {
+        "field": "Landsize",
+        "title": "Land Size (m^2)",
+        "type": "quantitative",
+        "format": ""
+      },
+      {
+        "field": "YearBuilt",
+        "title": "Year Built",
+        "type": "quantitative",
+        "format": ""
+      }
+    ]
+  }
+}
