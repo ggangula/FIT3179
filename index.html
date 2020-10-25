@@ -6,14 +6,32 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
   <!-- Import vega-embed -->
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+  
 </head>
 <body>
 
-<div id="vis"></div>
+<h1>Melbourne Housing Market</h1>
+
+<h2>This is the first visualisation</h2>
+<div id="choropleth_map"></div>
+
+<h2>This is the second visualisation</h2>
+<div id="bubble_plot"></div>
 
 <script type="text/javascript">
-  var spec = "https://ggangula.github.io/FIT3179/week9visualization.vl.json";
-  vegaEmbed('#vis', spec).then(function(result) {
+  
+  var vis1 = "https://github.com/ggangula/FIT3179/blob/main/week9visualization.vl.json";
+  
+  vegaEmbed('#choropleth_map', vis1).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+  var vis2 = "https://github.com/ggangula/FIT3179/blob/main/week10visualization.vl.json";
+  
+  vegaEmbed('#bubble_plot', vis2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
