@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 800,
+  "width": 1000,
   "height": 600,
   "title": "Average Price of Housing in Melbourne",
   "projection": {
