@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Melbourne House Pricing Based on Time",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
+  },
+  "mark": "area",
+  "params": [
+    {
+      "name": "Region_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Eastern Metropolitan",
+          "Eastern Victoria",
+          "Northern Metropolitan",
+          "Northern Victoria",
+          "South-Eastern Metropolitan",
+          "Southern Metropolitan",
+          "Western Metropolitan",
+          "Western Victoria"
+        ],
+        "labels": [
+          "Show All",
+          "Eastern Metropolitan",
+          "Eastern Victoria",
+          "Northern Metropolitan",
+          "Northern Victoria",
+          "South-Eastern Metropolitan",
+          "Southern Metropolitan",
+          "Western Metropolitan",
+          "Western Victoria"
+        ],
+        "name": "Region Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "Region_selection == null || datum.Regionname==Region_selection"}
+  ],
+  "encoding": {
+    "x": {"timeUnit": "yearmonth", "field": "Date", "title": "Date"},
+    "y": {"aggregate": "sum", "field": "Price", "axis": {"title": "Price"}},
+    "color": {
+      "field": "Regionname",
+      "type": "nominal",
+      "title": "Region",
+      "scale": {
+        "domain": [
+          "Eastern Metropolitan",
+          "Eastern Victoria",
+          "Northern Metropolitan",
+          "Northern Victoria",
+          "South-Eastern Metropolitan",
+          "Southern Metropolitan",
+          "Western Metropolitan",
+          "Western Victoria"
+        ],
+        "range": [
+          "#e41a1c",
+          "#a65628",
+          "#ff7f00",
+          "#df65b0",
+          "#a6cee3",
+          "#377eb8",
+          "#984ea3",
+          "#7bccc4"
+        ]
+      }
+    }
+  }
+}
