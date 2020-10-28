@@ -1,0 +1,183 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 600,
+  "title": "House Prices based on Distance from CBD",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
+  },
+  "params": [
+    {
+      "name": "Region_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Eastern Metropolitan",
+          "Eastern Victoria",
+          "Northern Metropolitan",
+          "Northern Victoria",
+          "South-Eastern Metropolitan",
+          "Southern Metropolitan",
+          "Western Metropolitan",
+          "Western Victoria"
+        ],
+        "labels": [
+          "Show All",
+          "Eastern Metropolitan",
+          "Eastern Victoria",
+          "Northern Metropolitan",
+          "Northern Victoria",
+          "South-Eastern Metropolitan",
+          "Southern Metropolitan",
+          "Western Metropolitan",
+          "Western Victoria"
+        ],
+        "name": "Region Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Distance > 0"},
+    {"filter": "datum.MedianPrice > 0"},
+    {"filter": "Region_selection == null || datum.Regionname==Region_selection"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "Distance",
+      "type": "quantitative",
+      "title": "Distance from CBD",
+      "axis": {"tickCount": 9},
+      "scale": {"type": "point"}
+    },
+    "y": {
+      "aggregate": "median",
+      "field": "Price",
+      "type": "quantitative",
+      "title": "Price",
+      "axis": {"tickCount": 3},
+      "scale": {"type": "point"}
+    }
+  },
+  "layer": [
+    {
+      "selection": {
+        "continent_highlight": {
+          "type": "multi",
+          "fields": ["Region"],
+          "bind": "legend"
+        }
+      },
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "aggregate": "median",
+          "field": "Bedroom2",
+          "type": "quantitative",
+          "title": "Bedrooms",
+          "scale": {
+            "type": "threshold",
+            "domain": [2, 3, 4, 6],
+            "range": [20, 80, 150, 250, 350]
+          },
+          "legend": {"format": ".1s"}
+        },
+        "color": {
+          "field": "Regionname",
+          "type": "nominal",
+          "title": "Region",
+          "scale": {
+            "domain": [
+              "Eastern Metropolitan",
+              "Eastern Victoria",
+              "Northern Metropolitan",
+              "Northern Victoria",
+              "South-Eastern Metropolitan",
+              "Southern Metropolitan",
+              "Western Metropolitan",
+              "Western Victoria"
+            ],
+            "range": [
+              "#e41a1c",
+              "#a65628",
+              "#ff7f00",
+              "#df65b0",
+              "#a6cee3",
+              "#377eb8",
+              "#984ea3",
+              "#7bccc4"
+            ]
+          }
+        },
+        "opacity": {"value": 0.6},
+        "tooltip": [
+          {"field": "Suburb", "title": "Suburb", "type": "nominal"},
+          {
+            "field": "MedianPrice",
+            "title": "Median Price",
+            "type": "quantitative",
+            "format": "$,"
+          },
+          {
+            "field": "Distance",
+            "title": "Distance from CBD (km)",
+            "type": "quantitative",
+            "format": ""
+          },
+          {"field": "CouncilArea", "title": "LGA", "type": "nominal"},
+          {"field": "Regionname", "title": "Region", "type": "nominal"},
+          {
+            "field": "MedianBed",
+            "title": "Median Bedrooms",
+            "type": "quantitative",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Suburb", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Suburb'] == 'Melbourne'|| datum['Suburb'] == 'Beaumaris' || datum['Suburb'] == 'Parkville' || datum['Suburb'] == 'Canterbury' || datum['Suburb'] == 'Pakenham' || datum['Suburb'] == 'Melton' || datum['Suburb'] == 'Cranbourne'|| datum['Suburb'] == 'Warrandyte' || datum['Suburb'] == 'Wallan' || datum['Suburb'] == 'Werribee'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Suburb", "title": "Suburb", "type": "nominal"},
+          {
+            "field": "MedianPrice",
+            "title": "Median Price",
+            "type": "quantitative",
+            "format": "$,"
+          },
+          {
+            "field": "Distance",
+            "title": "Distance from CBD (km)",
+            "type": "quantitative",
+            "format": ""
+          },
+          {"field": "CouncilArea", "title": "LGA", "type": "nominal"},
+          {"field": "Regionname", "title": "Region", "type": "nominal"},
+          {
+            "field": "MedianBed",
+            "title": "Median Bedrooms",
+            "type": "quantitative",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ]
+}
