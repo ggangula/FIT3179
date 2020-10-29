@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 400,
+  "title": "Melbourne House Prices over Time",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
+  },
+  "selection": {
+    "region_highlight": {
+      "type": "multi",
+      "fields": ["Regionname"],
+      "bind": "legend"
+    }
+  },
+  "mark": "area",
+  "encoding": {
+    "x": {"timeUnit": "yearmonth", "field": "Date", "title": "Date"},
+    "y": {
+      "aggregate": "median",
+      "field": "Price",
+      "type": "quantitative",
+      "title": "Price",
+      "scale": {"type": "linear"}
+    },
+    "color": {
+      "field": "Regionname",
+      "title": "Region",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Eastern Metropolitan",
+          "Eastern Victoria",
+          "Northern Metropolitan",
+          "Northern Victoria",
+          "South-Eastern Metropolitan",
+          "Southern Metropolitan",
+          "Western Metropolitan",
+          "Western Victoria"
+        ],
+        "range": [
+          "#e41a1c",
+          "#a65628",
+          "#ff7f00",
+          "#df65b0",
+          "#a6cee3",
+          "#377eb8",
+          "#984ea3",
+          "#7bccc4"
+        ]
+      }
+    },
+    "opacity": {
+      "condition": {"selection": "region_highlight", "value": 0.6},
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "Regionname", "title": "Region", "type": "nominal"},
+      {"field": "median_Price", "title": "Price", "type": "quantitative"},
+      {"field": "yearmonth_Date", "title": "Date", "type": "temporal"}
+    ]
+  }
+}
