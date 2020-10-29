@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
+  },
+  "title": "Dwellings in Melbourne",
+  "width": {"step": 50},
+  "height": {"step": 50},
+  "transform": [
+    {
+      "aggregate": [{"op": "count", "as": "num_houses"}],
+      "groupby": ["Type", "Regionname"]
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "Type",
+      "title": "Dwelling Type",
+      "type": "ordinal",
+      "axis": {"labelAngle": 0}
+    },
+    "x": {
+      "field": "Regionname",
+      "title": "Region",
+      "type": "ordinal",
+      "axis": {"labelAngle": -35}
+    }
+  },
+  "layer": [
+    {
+      "mark": "rect",
+      "encoding": {
+        "color": {
+          "field": "num_houses",
+          "type": "quantitative",
+          "title": "Count of Dwellings",
+          "legend": {"direction": "vertical", "gradientLength": 120}
+        }
+      }
+    },
+    {
+      "mark": "text",
+      "encoding": {
+        "text": {"field": "num_houses", "type": "quantitative"},
+        "color": {
+          "condition": {"test": "datum['num_houses'] > 500", "value": "white"},
+          "value": "black"
+        }
+      }
+    }
+  ],
+  "config": {"axis": {"grid": true, "tickBand": "extent"}}
+}
