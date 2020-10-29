@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Price based on Dwelling Type",
+  "width": {"step": 100},
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
+  },
+  "encoding": {
+    "x": {"field": "Type"},
+    "y": {
+      "aggregate": "median",
+      "field": "Price",
+      "axis": {"title": "Median Price ($)"},
+      "scale": {"type": "linear"}
+    },
+    "color": {
+      "field": "Type",
+      "type": "nominal",
+      "scale": {
+        "domain": ["House", "Townhouse", "Unit"],
+        "range": ["#7fcdbb", "#41b6c4", "#0c2c84"]
+      }
+    },
+    "tooltip": [
+      {"field": "Type", "type": "nominal"},
+      {
+        "aggregate": "median",
+        "field": "Price",
+        "title": "Median Price",
+        "type": "quantitative",
+        "format": "$,"
+      }
+    ]
+  },
+  "layer": [
+    {"mark": "bar"},
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "line-bottom",
+        "dx": 4
+      },
+      "encoding": {
+        "text": {
+          "aggregate": "median",
+          "field": "Price",
+          "type": "quantitative",
+          "format": "$,"
+        }
+      }
+    }
+  ]
+}
