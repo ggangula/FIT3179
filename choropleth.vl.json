@@ -1,12 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 800,
-  "height": 400,
   "title": "Average Price of Housing in Melbourne",
+  "width": 850,
+  "height": 450,
   "projection": {
     "type": "conicEqualArea",
     "parallels": [-36, -38],
-    "rotate": [-145, 0, 0]
+    "rotate": [-140, 0, 0]
   },
   "params": [
     {
@@ -21,12 +21,29 @@
       }
     }
   ],
-  "layer": [
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/vic.topojson",
-        "format": {"type": "topojson", "feature": "collection"}
+  "data": {
+    "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/vic.topojson",
+    "format": {"type": "topojson", "feature": "collection"}
+  },
+  "encoding": {
+    "tooltip": [
+      {
+        "field": "properties.vic_lga__3",
+        "type": "nominal",
+        "title": "Local Government Area"
       },
+      {
+        "field": "AveragePriceLGA",
+        "type": "quantitative",
+        "title": "Average Price",
+        "format": "$,"
+      },
+      {"field": "Regionname", "type": "nominal", "title": "Region"}
+    ]
+  },
+  "layer": [
+    {"mark": {"type": "geoshape", "fill": "gainsboro", "stroke": "white"}},
+    {
       "transform": [
         {
           "lookup": "properties.vic_lga__3",
@@ -37,31 +54,21 @@
             "key": "CouncilArea",
             "fields": ["AveragePriceLGA", "Regionname"]
           }
-        },
-        {"calculate": "datum.AveragePriceLGA + 0", "as": "AveragePriceLGA_new"}
+        }
       ],
       "mark": {"type": "geoshape"},
       "encoding": {
         "color": {
-          "field": "AveragePriceLGA_new",
+          "field": "AveragePriceLGA",
           "type": "quantitative",
-          "title": "Average Price"
-        },
-        "tooltip": [
-          {
-            "field": "properties.vic_lga__3",
-            "type": "nominal",
-            "title": "Local Government Area"
-          },
-          {
-            "field": "AveragePriceLGA",
-            "type": "quantitative",
-            "title": "Average Price",
-            "format": "$,"
-          },
-          {"field": "Regionname", "type": "nominal", "title": "Region"}
-        ]
+          "title": ["Average Price"],
+          "scale": {
+            "type": "linear",
+            "range": ["#c6dbef", "#6baed6", "#2171b5", "#084594"]
+          }
+        }
       }
     }
-  ]
+  ],
+  "config": {"view": {"stroke": null}}
 }
