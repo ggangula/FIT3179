@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 380,
+  "width": "container",
   "height": 300,
   "title": "Melbourne House Prices over Time",
   "data": {
