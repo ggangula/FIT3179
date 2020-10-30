@@ -4,8 +4,8 @@
     "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
   },
   "title": "Dwellings in Melbourne",
-  "width": {"step": 50},
-  "height": {"step": 50},
+  "width": {"step": 20},
+  "height": {"step": 20},
   "transform": [
     {
       "aggregate": [{"op": "count", "as": "num_houses"}],
