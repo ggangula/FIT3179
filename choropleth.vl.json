@@ -10,12 +10,12 @@
   },
   "params": [
     {
-      "name": "AveragePriceLGA",
+      "name": "AveragePriceLGA_new",
       "value": 0,
       "bind": {
         "input": "range",
         "min": 0,
-        "max": 3000000,
+        "max": 1500000,
         "step": 100000,
         "name": "Minimum Average Price: "
       }
@@ -54,7 +54,8 @@
             "key": "CouncilArea",
             "fields": ["AveragePriceLGA", "Regionname"]
           }
-        }
+        },
+        {"filter": "datum.AveragePriceLGA > AveragePriceLGA_new"}
       ],
       "mark": {"type": "geoshape"},
       "encoding": {
