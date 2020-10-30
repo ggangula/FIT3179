@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 600,
+  "width": 400,
   "height": 400,
   "title": "House Prices based on Distance from CBD",
   "data": {
