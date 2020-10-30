@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "title": "Price based on Dwelling Type",
-  "width": {"step": 100},
-  "height": 450,
+  "width": {"step": 20},
+  "height": 100,
   "data": {
     "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
   },
