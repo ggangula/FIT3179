@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Melbourne Housing Market</title>
+  <title>Multiple Visualisations | An Example</title>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
@@ -22,11 +22,11 @@
       font-weight: 900;
     }
      body{
-       background-color: gray;
+       background-color: lightgray;
      }
      .page{
        width: 850px;    
-       background-color: lightgray;   
+       background-color: white;   
        margin: auto;
        padding: 50px;
        padding-top: 35px;
@@ -57,9 +57,9 @@
 
    <!-- pure grid group -->
     <div class="pure-g">
-      <div class="pure-u-1-1 small-font">
+      <div class="pure-u-1-1">
         <h1>Melbourne Housing Market</h1>
-        <p>Data obtained from: https://www.kaggle.com/anthonypino/melbourne-housing-market</p>
+        <p>Data Obtained: https://www.kaggle.com/anthonypino/melbourne-housing-market</p>
       </div>
     </div>
   <!-- end pure grid group -->
@@ -68,9 +68,9 @@
     <div class="pure-g">
         <div class="pure-u-1-3">
           <div class="description description-left">
-            <p> Melbourne, crowned as the world's most liveable city for 7 years. This is a guide on what to expect in cost to invest in a house in Melbourne's housing market.
-            </p>     </div>
-    </div>
+            <h2>This is the first section</h2>
+            <p>The first column is used for description while the next two columns are merged and used for visualisation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
+          </div>
         </div>
         <div class="pure-u-2-3">
           <div id="vis1" class="vis-container"></div>
@@ -83,19 +83,21 @@
         <div class="pure-u-2-3">
           <div id="vis2"  class="vis-container"></div>
         </div>
-      <div class="pure-u-1-3">
+        <div class="pure-u-1-3">
           <div class="description description-right">
-            <h2></h2>
-            <p></p>
+            <h2>This is the second section</h2>
+            <p>Similar to the previous section, but the colum partition is swapped. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
           </div>
-        </div
+        </div>
+      
+    </div>
     <!-- end pure grid group -->
+   
 <!-- pure grid group -->
-   <div class="pure-g">
+    <div class="pure-g">
         <div class="pure-u-1-3">
           <div class="description description-left">
-            <h2></h2>
-            <p></p>
+            <p>The first column is used for description while the next two columns are merged and used for visualisation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
           </div>
         </div>
         <div class="pure-u-2-3">
@@ -103,15 +105,16 @@
         </div>
     </div>
     <!-- end pure grid group -->
+   
     <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-3">
         <div class="description description-left">
-        <h2></h2>
-          <p></p>
+          <h2>This is the third section</h2>
+          <p>Using all three columns without merging. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
         </div>
-      </div>  
-     <div class="pure-u-1-3">
+      </div>
+      <div class="pure-u-1-3">
         <div id="vis4"  class="vis-container"></div>
       </div>
       <div class="pure-u-1-3">
@@ -132,10 +135,10 @@
    
 <script type="text/javascript">
   var specVis1 = "./choropleth.vl.json";
-  var specVis2= "./bubbleplot.vl.json";
+  var specVis2 = "./bubble.vl.json";
   var specVis3 = "./areachart.vl.json";
-  var specVis4= "./barchart.vl.json";
-  var specVis5 = "./heatmap.vl.json";        
+  var specVis4 = "./barchart.vl.json";
+  var specVis1 = "./heatmapp.vl.json";
 
   vegaEmbed('#vis1', specVis1, {"actions": false}).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
@@ -152,7 +155,7 @@
   vegaEmbed('#vis4', specVis4, {"actions": false}).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
-   
+          
    vegaEmbed('#vis5', specVis5, {"actions": false}).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
