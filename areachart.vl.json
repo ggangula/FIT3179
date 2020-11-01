@@ -57,7 +57,7 @@
     },
     "tooltip": [
       {"field": "Regionname", "title": "Region", "type": "nominal"},
-      {"field": "median_Price", "title": "Price", "type": "quantitative"},
+      {"field": "median_Price", "title": "Price", "type": "quantitative", "format": "$,"},
       {"field": "yearmonth_Date", "title": "Date", "type": "temporal"}
     ]
   }
