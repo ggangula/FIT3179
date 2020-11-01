@@ -2,6 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "width": "container",
   "height": 400,
+  "background": "azure",
   "title": "House Prices based on Distance from CBD",
   "data": {
     "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
@@ -55,8 +56,8 @@
       "field": "Price",
       "type": "quantitative",
       "title": "Price",
-      "axis": {"tickCount": 3},
-      "scale": {"type": "point"}
+      "axis": {"tickCount": 5},
+      "scale": {"type": "linear"}
     }
   },
   "layer": [
@@ -77,8 +78,8 @@
           "title": "Bedrooms",
           "scale": {
             "type": "threshold",
-            "domain": [2, 3, 4, 6],
-            "range": [20, 80, 150, 250, 350]
+            "domain": [2, 3, 5],
+            "range": [20, 80, 150, 250]
           },
           "legend": {"format": ".1s"}
         },
