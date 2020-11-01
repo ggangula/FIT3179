@@ -3,6 +3,7 @@
   "title": "Average Price of Housing in Melbourne",
   "width": "container",
   "height": 450,
+  "background": "antiquewhite",
   "projection": {
     "type": "conicEqualArea",
     "parallels": [-36, -38],
