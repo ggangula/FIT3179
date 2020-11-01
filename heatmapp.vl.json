@@ -7,6 +7,7 @@
   "background": "azure",
   "width": "container",
   "height": 200,
+  
   "transform": [
     {
       "aggregate": [{"op": "count", "as": "num_houses"}],
@@ -50,5 +51,28 @@
       }
     }
   ],
-  "config": {"axis": {"grid": true, "tickBand": "extent"}}
+   "config": {
+        "view": {
+            "stroke": null
+        },
+        "axis": {
+            "labelFont": "Oxygen",
+            "titleFont": "Oxygen",
+            "grid": true,
+            "tickBand": "extent"
+        },
+        "legend": {
+            "labelFont": "Oxygen",
+            "titleFont": "Oxygen"
+        },
+        "header": {
+            "labelFont": "Oxygen",
+            "titleFont": "Oxygen"
+        },
+        "title": {
+            "font": "Oxygen",
+            "fontSize": 16,
+            "fontWeight": 600
+        }
+    }
 }
