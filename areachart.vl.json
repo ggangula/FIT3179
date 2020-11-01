@@ -7,6 +7,28 @@
   "data": {
     "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
   },
+  "config": {
+        "view": {
+            "stroke": null
+        },
+        "axis": {
+            "labelFont": "Oxygen",
+            "titleFont": "Oxygen"
+        },
+        "legend": {
+            "labelFont": "Oxygen",
+            "titleFont": "Oxygen"
+        },
+        "header": {
+            "labelFont": "Oxygen",
+            "titleFont": "Oxygen"
+        },
+        "title": {
+            "font": "Oxygen",
+            "fontSize": 16,
+            "fontWeight": 600
+        }
+    },
   "selection": {
     "region_highlight": {
       "type": "multi",
@@ -60,5 +82,6 @@
       {"field": "median_Price", "title": "Price", "type": "quantitative", "format": "$,"},
       {"field": "yearmonth_Date", "title": "Date", "type": "temporal"}
     ]
+    
   }
 }
