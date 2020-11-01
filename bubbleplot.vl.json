@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "width": "container",
-  "height": 600,
+  "height": 550,
   "background": "azure",
   "title": "House Prices based on Distance from CBD",
   "data": {
@@ -180,5 +180,27 @@
         ]
       }
     }
-  ]
+  ],
+  "config": {
+        "view": {
+          "stroke": null
+        },
+        "axis": {
+          "labelFont": "Oxygen",
+          "titleFont": "Oxygen"
+        },
+        "legend": {
+          "labelFont": "Oxygen",
+          "titleFont": "Oxygen"
+        },
+        "header": {
+          "labelFont": "Oxygen",
+          "titleFont": "Oxygen"
+        },
+        "title": {
+          "font": "Oxygen",
+          "fontSize": 16,
+          "fontWeight": 600
+        }
+      }
 }
