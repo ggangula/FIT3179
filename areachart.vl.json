@@ -1,7 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "width": "container",
-  "height": 300,
+  "background": "azure",
+  "height": 400,
   "title": "Melbourne House Prices over Time",
   "data": {
     "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
