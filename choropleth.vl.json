@@ -2,8 +2,8 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "title": "Average Price of Housing in Melbourne",
   "width": "container",
-  "height": 450,
-  "background": "antiquewhite",
+  "height": 400,
+  "background": "azure",
   "projection": {
     "type": "conicEqualArea",
     "parallels": [-36, -38],
@@ -65,8 +65,7 @@
           "type": "quantitative",
           "title": ["Average Price"],
           "scale": {
-            "type": "linear",
-            "range": ["#c6dbef", "#6baed6", "#2171b5", "#084594"]
+            "type": "linear"
           }
         }
       }
