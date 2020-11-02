@@ -17,18 +17,23 @@
   "mark": {"type": "rect", "strokeWidth": 2},
   "encoding": {
     "y": {"field": "Type", "type": "nominal", "title": "Dwelling Type"},
-    "x": {"field": "Regionname", "type": "nominal", "title": "Region"},
+    "x": {
+      "field": "Regionname",
+      "type": "nominal",
+      "title": "Region",
+      "axis": {"labelAngle": -35}
+    },
     "fill": {
       "field": "num_houses",
       "type": "quantitative",
-      "title": "Count of Dwelling"
+      "title": "Count of Dwellings"
     },
     "tooltip": [
       {"field": "Regionname", "type": "nominal", "title": "Region"},
       {
         "field": "num_houses",
         "type": "quantitative",
-        "title": "Number of Dwelling"
+        "title": "Number of Dwellings"
       }
     ],
     "stroke": {
