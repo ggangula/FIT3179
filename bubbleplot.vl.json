@@ -150,7 +150,7 @@
         "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "datum['Suburb'] == 'South Yarra'|| datum['Suburb'] == 'Beaumaris' || datum['Suburb'] == 'Parkville' || datum['Suburb'] == 'Canterbury' || datum['Suburb'] == 'Pakenham' || datum['Suburb'] == 'Melton' || datum['Suburb'] == 'Cranbourne'|| datum['Suburb'] == 'Warrandyte' || datum['Suburb'] == 'Wallan' || datum['Suburb'] == 'Werribee'",
+            "test": datum['Suburb'] == 'Beaumaris' || datum['Suburb'] == 'Parkville' || datum['Suburb'] == 'Canterbury' || datum['Suburb'] == 'Pakenham' || datum['Suburb'] == 'Melton' || datum['Suburb'] == 'Cranbourne'|| datum['Suburb'] == 'Warrandyte' || datum['Suburb'] == 'Wallan' || datum['Suburb'] == 'Werribee'",
             "value": 1
           },
           "value": 0
