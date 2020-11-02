@@ -1,0 +1,67 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
+  },
+  "title": "Dwellings in Melbourne",
+  "background": "azure",
+  "width": "container",
+  "height": 200,
+  "transform": [
+    {
+      "aggregate": [{"op": "count", "as": "num_houses"}],
+      "groupby": ["Type", "Regionname"]
+    }
+  ],
+  "selection": {"highlight": {"type": "single"}},
+  "mark": {"type": "rect", "strokeWidth": 2},
+  "encoding": {
+    "y": {"field": "Type", "type": "nominal", "title": "Dwelling Type"},
+    "x": {"field": "Regionname", "type": "nominal", "title": "Region"},
+    "fill": {
+      "field": "num_houses",
+      "type": "quantitative",
+      "title": "Count of Dwelling"
+    },
+    "tooltip": [
+      {"field": "Regionname", "type": "nominal", "title": "Region"},
+      {
+        "field": "num_houses",
+        "type": "quantitative",
+        "title": "Number of Dwelling"
+      }
+    ],
+    "stroke": {
+      "condition": {
+        "test": {
+          "and": [
+            {"selection": "highlight"},
+            "length(data(\"highlight_store\"))"
+          ]
+        },
+        "value": "black"
+      },
+      "value": null
+    },
+    "opacity": {
+      "condition": {"selection": "highlight", "value": 1},
+      "value": 0.5
+    },
+    "order": {"condition": {"selection": "highlight", "value": 1}, "value": 0}
+  },
+  "config": {
+    "scale": {"bandPaddingInner": 0, "bandPaddingOuter": 0},
+    "view": {"step": 40},
+    "range": {"ramp": {"scheme": "yellowgreenblue"}},
+    "axis": {
+      "domain": false,
+      "labelFont": "Oxygen",
+      "titleFont": "Oxygen",
+      "grid": true,
+      "tickBand": "extent"
+    },
+    "legend": {"labelFont": "Oxygen", "titleFont": "Oxygen"},
+    "header": {"labelFont": "Oxygen", "titleFont": "Oxygen"},
+    "title": {"font": "Oxygen", "fontSize": 16, "fontWeight": 600}
+  }
+}
