@@ -3,7 +3,7 @@
   "title": "Price based on Dwelling Type",
   "background": "azure",
   "width": "container",
-  "height": 275,
+  "height": 280,
   "data": {
     "url": "https://raw.githubusercontent.com/ggangula/FIT3179/main/Melbourne%20Housing.csv"
   },
